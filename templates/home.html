@@ -10,12 +10,12 @@
 <div class="auth">
   {% if user.is_authenticated %}
     <h2>Hi {{ user.username }}!</h2>
-    <button type="submit"><a href="{% url 'logout' %}" class="top-menu">Log Out</a></button>
+    <button type="submit"><a href="{% url 'logout' %}" class="login-logout-buttons">Log Out</a></button>
   <header>
   {% endif %}
 </div>
 <div class="app-links">
-  <h4><a href="{% url 'polls:index' %}">Polls</a></h4>
+  <h3><a href="{% url 'polls:index' %}">Polls</a></h3>
 </div>
 <div class="home-message">
   <p>Please login or signup to access all website features.</p>

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="{% static 'polls/all.min.css' %}" type="text/css" rel="stylesheet">
   </head>
   <body>
     <div class="page-header">
@@ -16,10 +18,11 @@
         <a href="{% url 'polls:new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {% endif %}
         <a href="{% url 'home' %}" class="top-menu"><span class="glyphicon glyphicon-home"></span></a>
+        <a href="{% url 'polls:blockchain' %}" class="top-menu"><span class=""><i class="fab fa-ethereum" style='font-size:50px;color:black'></i></span></a>        
         <h1><a href="{% url 'polls:index' %}">Details</a></h1>
     </div>
     <div class="content">
-    <h1>{{ question.question_text }}</h1>
+    <h1 class="survey-question">{{ question.question_text }}</h1>
     
     {% if error_message %}<p><strong>{{ error_message }}
     </strong></p>{% endif %}
@@ -31,8 +34,16 @@
       value="{{ choice.id }}">
       <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
     {% endfor %}
-    <input type="submit" value="vote">
+    <button class="btn-submit" id="vote-button">Vote</button>
     </form>
+      <div class="blockchain-container">
+        <!-- Displays blocknumber passed via JavaScript -->
+        <h2 class="text blocknumber">Block number:&nbsp;<span id="blocknumber"></span></h2>
+        <!-- Displays txReceipt passed via JavaScript -->
+        <h2 class="text txReceipt">Tx Receipt:&nbsp;<span id="txReceipt"></span></h2>
+        <!-- Displays gasUsed passed via JavaScript -->
+        <h2 class="text gasUsed">Gas Used:&nbsp;<span id="gasUsed"></span></h2>      
+      </div>
     </div>
   </body>
 </html>

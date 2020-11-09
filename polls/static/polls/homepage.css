@@ -10,10 +10,6 @@
     text-decoration: none;
 }
 
-.blockchain {
-    padding: 20px;
-}
-
 .content {
     margin-left: 40px;
 }
@@ -37,10 +33,3 @@ h1, h2, h3, h4 {
     margin-right: 20px;
 }
 
-.btn-submit {
-  margin: 15px;
-  padding: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-}
