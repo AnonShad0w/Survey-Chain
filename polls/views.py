@@ -17,7 +17,13 @@ from .forms import *
 # URL of Node Provider Service
 url = 'https://ropsten.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57'
 web3 = Web3(Web3.HTTPProvider(url))
-#address = web3.toChecksumAddress() #address to deployed smart contract
+address = web3.toChecksumAddress('0x10C3D8044AB699a3cb94e4618e7AB78A0b03C973') #address to deployed smart contract
+
+# Open JSON file
+f = open('/home/pi/survey_chain/polls/abi.json', 'r')
+abi = json.loads(f.read())
+
+contract = web3.eth.contract(address=address, abi=abi)
 
 # function based view to check Ethereum Node information
 def blockchain_info(request):
