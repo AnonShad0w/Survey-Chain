@@ -115,7 +115,7 @@ def vote(request, question_id):
             # with POST data. This prevents data from being posted twice if a
             # user hits the Back button.
             return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-            
+
 def new_poll(request):
     
     ChoiceFormSet = formset_factory(ChoiceForm, extra=3, min_num=2, validate_min=True)

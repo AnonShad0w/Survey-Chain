@@ -15,7 +15,6 @@
   <body>
     <div class="page-header">
         {% if user.is_authenticated %}
-        <a href="{% url 'polls:new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {% endif %}
         <a href="{% url 'home' %}" class="top-menu"><span class="glyphicon glyphicon-home"></span></a>
         <a href="{% url 'polls:blockchain' %}" class="top-menu"><span class=""><i class="fab fa-ethereum" style='font-size:50px;color:black'></i></span></a>        

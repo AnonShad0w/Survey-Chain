@@ -1,4 +1,5 @@
 {% load static %}
+<script src="{% static 'polls_detail.js' %}"></script>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +35,11 @@
       value="{{ choice.id }}">
       <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
     {% endfor %}
-    <button class="btn-submit" id="vote-button">Vote</button>
+    <button class="btn-default" id="vote-button">Vote</button>
+    </form>
+    <form action="{% url 'polls:results' question.id %}" method="GET">
+    {% csrf_token %}
+        <button class="btn-default" id="results-button">Results</button>
     </form>
       <div class="blockchain-container">
         <!-- Displays blocknumber passed via JavaScript -->
