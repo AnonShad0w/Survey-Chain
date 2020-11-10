@@ -17,7 +17,7 @@ contract Ballot {
         string choice;
     }
      
-    function addBallot(string memory _choice) private {
+    function addBallot(string memory _choice) public {
         incrementBallot();
         surveys[totalBallots] = Survey(totalBallots, _choice);
     }

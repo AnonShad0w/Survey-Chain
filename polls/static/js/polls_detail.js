@@ -1,9 +1,11 @@
+const Web3 = require('web3')
+/*
 // The object 'Contracts' will be injected here, which contains all data for all contracts, keyed on contract name:
-// Contracts['MyContract'] = {
-//  abi: [],
-//  address: "0x..",
-//  endpoint: "http://...."
-// }
+Contracts['MyContract'] = {
+    abi: [{'inputs': [{'internalType': 'string', 'name': '_choice', 'type': 'string'}], 'name': 'addBallot', 'outputs': [], 'stateMutability': 'nonpayable', 'type': 'function'}, {'inputs': [{'internalType': 'uint256', 'name': '', 'type': 'uint256'}], 'name': 'surveys', 'outputs': [{'internalType': 'uint256', 'name': 'id', 'type': 'uint256'}, {'internalType': 'string', 'name': 'choice', 'type': 'string'}], 'stateMutability': 'view', 'type': 'function'}],
+    address: "0x070f7B6de5e5453FaCD01dA8cFf382BC6ACd4d9b",
+    endpoint: "https://ropsten.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57"
+}
 
 // Creates an instance of the smart contract, passing it as a property,
 // which allows web3.js to interact with it.
@@ -192,3 +194,4 @@ var ballot = new Ballot(Contracts["Ballot"]);
 $(document).ready(function () {
   ballot.onReady();
 });
+*/
