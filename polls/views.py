@@ -34,7 +34,6 @@ def blockchain_info(request):
         pass
     elif request.method == 'POST':
         address = request.POST.get('address')
-        print(address)
         wallet_balance = web3.eth.getBalance(address)
         wallet_balance = web3.fromWei(wallet_balance, "ether") # convert to ether
     
@@ -110,10 +109,31 @@ def vote(request, question_id):
             VoterSelection.objects.create(choice=selected_choice, voter=user, question_id=question_id)
             selected_choice.votes += 1
             selected_choice.save()
+            choice = str(selected_choice)
+            print(choice)
+            
+            key = 'f1237e4112d091b973ed5cc63dc71a8e6f078b39a5262f8f056b3be53d1c1bf6'
+            my_wallet_address = '0x34471993D95629D92b47f2e751a7f061F5d8B20e'
+            gas_estimate = contract.functions.addBallot(choice).estimateGas()
+            print(gas_estimate)
+            
+            transaction = contract.functions.addBallot(choice).buildTransaction()
+            print(transaction)
+            transaction.update({ 'gas' : 100000 })
+            transaction.update({ 'nonce': web3.eth.getTransactionCount(my_wallet_address) })
+            signed_tx = web3.eth.account.signTransaction(transaction, key)
+            print(signed_tx)
+            tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
+            print(tx_hash)
+            receipt = web3.eth.waitForTransactionReceipt(tx_hash)
+            print(receipt)
+            
+            
             # Always return an HttpResponseRedirect after successfully dealing
             # with POST data. This prevents data from being posted twice if a
             # user hits the Back button.
-            return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+            #return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+            return HttpResponseRedirect(reverse('polls:detail', args=(question.id,)))
 
 def new_poll(request):
     

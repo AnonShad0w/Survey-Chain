@@ -1,12 +1,15 @@
-const Web3 = require('web3')
+var Web3 = require('web3');
+var provider = 'https://ropsten.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57';
+var web3Provider = new Web3.providers.HttpProvider(provider);
+var web3 = new Web3(web3Provider);
 /*
 // The object 'Contracts' will be injected here, which contains all data for all contracts, keyed on contract name:
-Contracts['MyContract'] = {
+Contracts['Ballot'] = {
     abi: [{'inputs': [{'internalType': 'string', 'name': '_choice', 'type': 'string'}], 'name': 'addBallot', 'outputs': [], 'stateMutability': 'nonpayable', 'type': 'function'}, {'inputs': [{'internalType': 'uint256', 'name': '', 'type': 'uint256'}], 'name': 'surveys', 'outputs': [{'internalType': 'uint256', 'name': 'id', 'type': 'uint256'}, {'internalType': 'string', 'name': 'choice', 'type': 'string'}], 'stateMutability': 'view', 'type': 'function'}],
     address: "0x070f7B6de5e5453FaCD01dA8cFf382BC6ACd4d9b",
     endpoint: "https://ropsten.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57"
 }
-
+*/
 // Creates an instance of the smart contract, passing it as a property,
 // which allows web3.js to interact with it.
 function Ballot(Contract) {
@@ -150,7 +153,7 @@ Ballot.prototype.updateDisplay = function () {
 Ballot.prototype.bindButtons = function () {
   var that = this;
 
-  $(document).on("click", "#submit-button", function () {
+  $(document).on("click", "#vote-button", function () {
     that.setChoice();
   });
 };
@@ -194,4 +197,4 @@ var ballot = new Ballot(Contracts["Ballot"]);
 $(document).ready(function () {
   ballot.onReady();
 });
-*/
+
