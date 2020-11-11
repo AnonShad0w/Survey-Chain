@@ -1,3 +1,5 @@
+import os
+import dotenv
 import json
 from web3 import Web3
 from datetime import datetime
@@ -10,6 +12,7 @@ from django.utils import timezone
 from django.forms import formset_factory
 from django.contrib.auth import get_user_model
 from django.conf import settings
+from pathlib import Path
 
 from .models import Question, Choice, VoterSelection
 from .forms import *
@@ -23,6 +26,13 @@ address = web3.toChecksumAddress('0x070f7B6de5e5453FaCD01dA8cFf382BC6ACd4d9b') #
 f = open('/home/pi/survey_chain/polls/abi.json', 'r')
 abi = json.loads(f.read())
 contract = web3.eth.contract(address=address, abi=abi)
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 # function based view to check Ethereum Node information
 def blockchain_info(request):
@@ -112,7 +122,7 @@ def vote(request, question_id):
             choice = str(selected_choice)
             print(choice)
             
-            key = 'f1237e4112d091b973ed5cc63dc71a8e6f078b39a5262f8f056b3be53d1c1bf6'
+            key = os.environ['KEY']
             my_wallet_address = '0x34471993D95629D92b47f2e751a7f061F5d8B20e'
             gas_estimate = contract.functions.addBallot(choice).estimateGas()
             print(gas_estimate)
@@ -124,9 +134,12 @@ def vote(request, question_id):
             signed_tx = web3.eth.account.signTransaction(transaction, key)
             print(signed_tx)
             tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
-            print(tx_hash)
             receipt = web3.eth.waitForTransactionReceipt(tx_hash)
             print(receipt)
+            print(receipt['blockNumber'])
+            print(receipt['cumulativeGasUsed'])
+            transaction_hash = (receipt['transactionHash']).hex()
+            print(transaction_hash)
             
             
             # Always return an HttpResponseRedirect after successfully dealing
