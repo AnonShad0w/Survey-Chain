@@ -26,8 +26,9 @@
     <div class="content">
         <h1 class="survey-question">{{ question.question_text }}</h1>
         
-        {% if error_message %}<p><strong>{{ error_message }}
-        </strong></p>{% endif %}
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
 
         <form action="{% url 'polls:vote' question.id %}" method="post">
         {% csrf_token %}
@@ -42,7 +43,7 @@
         {% csrf_token %}
             <button class="btn-default" id="results-button">Results</button>
         </form>
-        <form action="{% url 'polls:transaction' %}" method="GET">
+        <form action="{% url 'polls:transaction' question.id %}" method="GET">
         {% csrf_token %}
             <button class="btn-default" id="results-button">Transaction Details</button>
         </form>        

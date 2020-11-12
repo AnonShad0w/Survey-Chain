@@ -1,9 +1,9 @@
 import os
 import dotenv
 import json
+
 from web3 import Web3
 from datetime import datetime
-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -36,9 +36,15 @@ if os.path.isfile(dotenv_file):
 
 # function based view to check Ethereum Node information
 def blockchain_info(request):
-    connection_status = web3.isConnected()
+    
     current_block_num = web3.eth.blockNumber
-
+    
+    if request.method=='GET' and 'current-block-btn' in request.GET:
+        tmpl_vars = {
+                'current_block_num': current_block_num,
+            }         
+        return render(request, 'polls/blockchain.html', tmpl_vars)
+        
     if request.method == None:
         pass
     # wallet address from text field
@@ -48,17 +54,13 @@ def blockchain_info(request):
         wallet_balance = web3.fromWei(wallet_balance, "ether") # convert to ether
     
         tmpl_vars = {
-            'connection_status': connection_status,
             'current_block_num': current_block_num,
             'wallet_balance': wallet_balance,
             'address': address,
         }
         return render(request, 'polls/blockchain.html', tmpl_vars)
-    tmpl_vars = {
-            'connection_status': connection_status,
-            'current_block_num': current_block_num,
-        }
-    return render(request, 'polls/blockchain.html', tmpl_vars)
+
+    return render(request, 'polls/blockchain.html')
 
 class IndexView(generic.ListView):
     
@@ -147,19 +149,29 @@ def vote(request, question_id):
             # user hits the Back button.
             return HttpResponseRedirect(reverse('polls:detail', args=(question.id,)))
 
-def transaction_detail(request):
+def transaction_detail(request, question_id):
+
+    question = get_object_or_404(Question, pk=question_id)
+    user = request.user
     
     block_number = request.session.get('block_number')
     cumulative_gas = request.session.get('cumulative_gas')
     transaction_hash = request.session.get('transaction_hash')
     
-    tmpl_vars = {
-        'block_number': block_number,
-        'cumulative_gas': cumulative_gas,
-        'transaction_hash': transaction_hash,
-    }
-    return render(request, 'polls/transaction.html', tmpl_vars)
-
+    if VoterSelection.objects.filter(voter=user, question_id=question_id).exists():   
+        tmpl_vars = {
+            'block_number': block_number,
+            'cumulative_gas': cumulative_gas,
+            'transaction_hash': transaction_hash,
+        }
+        return render(request, 'polls/transaction.html', tmpl_vars)
+    
+    else:
+        return render(request, 'polls/transaction.html', {
+            'question': question,
+            'error_message': "You didn't submit a vote for this question yet.",
+        })
+        
 def new_poll(request):
     
     ChoiceFormSet = formset_factory(ChoiceForm, extra=3, min_num=2, validate_min=True)

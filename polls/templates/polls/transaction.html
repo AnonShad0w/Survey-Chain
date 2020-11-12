@@ -23,11 +23,16 @@
         <a href="{% url 'polls:blockchain' %}" class="top-menu"><span class=""><i class="fab fa-ethereum" style='font-size:50px;color:black'></i></span></a>        
         <h1><a href="{% url 'polls:index' %}">Transaction Details</a></h1>
     </div>
+    <div class="error-message">
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+    </div>
     <div class="content">
-      <div class="blockchain-container">
-        <h2 class="text blocknumber">Block number:&nbsp;{{ block_number }}<span id="blocknumber"></span></h2>
-        <h2 class="text txReceipt">Tx Receipt:&nbsp;{{ transaction_hash }}<span id="txReceipt"></span></h2>
-        <h2 class="text gasUsed">Cumulative Gas Used:&nbsp;{{ cumulative_gas }}<span id="gasUsed"></span></h2>      
+      <div class="transaction-container">
+        <h3 class="text blocknumber">Block number:&nbsp;{{ block_number }}<span id="blocknumber"></span></h2>
+        <h3 class="text txReceipt">Tx Receipt:&nbsp;{{ transaction_hash }}<span id="txReceipt"></span></h2>
+        <h3 class="text gasUsed">Cumulative Gas Used:&nbsp;{{ cumulative_gas }}<span id="gasUsed"></span></h2>      
       </div>
     </div>
   </body>

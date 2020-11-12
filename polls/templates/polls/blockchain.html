@@ -22,10 +22,14 @@
     </div>
     <div class="content">
 	<div class="blockchain">
+	    <form action="" method="GET">
+	    {% csrf_token %}
 	    <p>Current block number (Ropsten Network): {{ current_block_num }}</p>
+	    <button type="submit-default" name="current-block-btn">Get</button>
+	    </form>
 	    <br>
 	    <div class="wallet amount">
-		<form method="POST">
+		<form action="" method="POST">
 		    {% csrf_token %}
 		    <label for="wallet address">Enter the wallet address:</label>
 		    <input type="text" id="wallet address" name="address" placeholder="0x..." size="45">
