@@ -38,10 +38,10 @@ if os.path.isfile(dotenv_file):
 def blockchain_info(request):
     connection_status = web3.isConnected()
     current_block_num = web3.eth.blockNumber
-    # wallet address from form input
-    #print(request.GET)
+
     if request.method == None:
         pass
+    # wallet address from text field
     elif request.method == 'POST':
         address = request.POST.get('address')
         wallet_balance = web3.eth.getBalance(address)
@@ -124,29 +124,41 @@ def vote(request, question_id):
             
             key = os.environ['KEY']
             my_wallet_address = '0x34471993D95629D92b47f2e751a7f061F5d8B20e'
-            gas_estimate = contract.functions.addBallot(choice).estimateGas()
-            print(gas_estimate)
             
             transaction = contract.functions.addBallot(choice).buildTransaction()
-            print(transaction)
-            transaction.update({ 'gas' : 100000 })
+            transaction.update({ 'gas' : 120000 })
             transaction.update({ 'nonce': web3.eth.getTransactionCount(my_wallet_address) })
             signed_tx = web3.eth.account.signTransaction(transaction, key)
-            print(signed_tx)
             tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
             receipt = web3.eth.waitForTransactionReceipt(tx_hash)
-            print(receipt)
+            block_number = str(receipt['blockNumber'])
             print(receipt['blockNumber'])
+            cumulative_gas = str(receipt['cumulativeGasUsed'])
             print(receipt['cumulativeGasUsed'])
-            transaction_hash = (receipt['transactionHash']).hex()
+            transaction_hash = str((receipt['transactionHash']).hex())
             print(transaction_hash)
             
+            request.session['block_number'] = block_number
+            request.session['cumulative_gas'] = cumulative_gas
+            request.session['transaction_hash'] = transaction_hash
             
             # Always return an HttpResponseRedirect after successfully dealing
             # with POST data. This prevents data from being posted twice if a
             # user hits the Back button.
-            #return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
             return HttpResponseRedirect(reverse('polls:detail', args=(question.id,)))
+
+def transaction_detail(request):
+    
+    block_number = request.session.get('block_number')
+    cumulative_gas = request.session.get('cumulative_gas')
+    transaction_hash = request.session.get('transaction_hash')
+    
+    tmpl_vars = {
+        'block_number': block_number,
+        'cumulative_gas': cumulative_gas,
+        'transaction_hash': transaction_hash,
+    }
+    return render(request, 'polls/transaction.html', tmpl_vars)
 
 def new_poll(request):
     
