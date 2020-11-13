@@ -8,17 +8,30 @@
     color: #ffffff;
     font-size: 36pt;
     text-decoration: none;
+    font-family: 'Lobster', cursive;    
 }
 
+.question-list {
+    font-family: 'Cinzel', serif;
+}
+
+.survey-question {
+    font-family: 'Cinzel', serif;
+}
+
+h4 {
+    font-family: 'Cinzel', serif;
+}
 .blockchain {
     padding: 20px;
 }
 
 .content {
     margin-left: 40px;
+    font-family: 'Cinzel', serif;    
 }
 
-h1, h2 {
+h1 {
     font-family: 'Lobster', cursive;
 }
 
@@ -44,4 +57,16 @@ h1, h2 {
 
 .error-message {
     text-align: center;
+}
+
+.vote-results {
+    font-size: 20px;
+}
+
+.app-links {
+    font-family: 'Cinzel', serif; 
+}
+
+.current-block-btn {
+    display: inline-block;
 }

@@ -165,7 +165,7 @@ def transaction_detail(request, question_id):
             'transaction_hash': transaction_hash,
         }
         return render(request, 'polls/transaction.html', tmpl_vars)
-    
+        
     else:
         return render(request, 'polls/transaction.html', {
             'question': question,
