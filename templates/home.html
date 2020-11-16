@@ -4,8 +4,16 @@
 
 {% block content %}
 <div class="page-header">
-  <a href="{% url 'login' %}" class="top-menu text-decoration-none login-links"><span>Log In</span></a>
-  <a href="{% url 'users:signup' %}" class="top-menu text-decoration-none login-links"><span>Sign Up</span></a>
+  <div class="auth">
+    {% if user.is_authenticated %}
+      <p class="account-user top-menu">Hi {{ user.username }}!</p>
+      <a href="{% url 'logout' %}" class="top-menu text-decoration-none login-links">Log Out</a>
+    {% endif %}
+  </div>
+  {% if user.is_anonymous %}
+    <a href="{% url 'login' %}" class="top-menu text-decoration-none login-links"><span>Log In</span></a>
+    <a href="{% url 'users:signup' %}" class="top-menu text-decoration-none login-links"><span>Sign Up</span></a>
+  {% endif %}
   <a href="{% url 'polls:blockchain' %}" class="top-menu"><span><i class="fab fa-ethereum" style='font-size:50px;color:black'></i></span></a>
   <a href="{% url 'polls:index' %}" class="top-menu app-links"><span>Polls</span></a>
   <h1>Survey-Chain</h1>    
@@ -20,26 +28,20 @@
       <div class="col-lg-4">
         <i class="icon fas fa-user-lock"></i>
         <h3 class="feature-heading">Secure</h3>
-        <p>Ballots written to the blockchain are private.</p>
+        <p class="feature-message">Ballots written to the blockchain are private.</p>
       </div>
       <div class="col-lg-4">
         <i class="icon fas fa-fingerprint"></i>
         <h3 class="feature-heading">Immutable</h3>
-        <p>Submit your vote and feel confident that votes cannot be altered.</p>
+        <p class="feature-message">Submit your vote and feel confident that votes cannot be altered.</p>
       </div>
       <div class="col-lg-4">
         <i class="icon far fa-clock"></i>
         <h3 class="feature-heading">Convenient</h3>
-        <p>Cast your ballot on your own time.</p>
+        <p class="feature-message">Cast your ballot on your own time.</p>
       </div>
     </div>
   </section>
-    <div class="auth">
-      {% if user.is_authenticated %}
-        <h2>Hi {{ user.username }}!</h2>
-        <button type="button" class="btn btn-dark"><a href="{% url 'logout' %}" class="text-decoration-none">Log Out</a></button>
-      {% endif %}
-    </div>
   </div>
 </div>
 {% endblock %}
