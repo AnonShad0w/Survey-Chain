@@ -21,34 +21,46 @@
 .app-links, app-links:hover {
     font-size: 25px !important;
     text-decoration: none !important;
-    font-family: "Ubuntu";
-    margin-top: 10px;
+    font-family: "Ubuntu" !important;
+    margin-top: 10px !important;
 }
 
 .login-links {
     font-size: 25px !important;
+    font-family: "Ubuntu" !important;
+    margin-top: 10px !important;
+}
+
+.account-user {
+    font-size: 25px !important;
     font-family: "Ubuntu";
-    margin-top: 10px;
+    margin-top: 10px !important;
+}
+
+.container-fluid {
+    padding: 7% 10%;
 }
 
 .question-list {
-    font-family: 'Cinzel', serif;
+    font-family: "Ubuntu";
 }
 
-.survey-question {
-    font-family: 'Cinzel', serif;
+.survey-form {
+    font-family: "Ubuntu";
+    text-align: center;
+}
+
+.form-buttons {
+    font-family: "Ubuntu";
+    text-align: center;
 }
 
 h4 {
-    font-family: 'Cinzel', serif;
-}
-.blockchain {
-    padding: 20px;
+    font-family: "Ubuntu";
 }
 
-.content {
-    margin-left: 40px;
-    font-family: 'Cinzel', serif;    
+.blockchain {
+    padding: 20px;
 }
 
 h1 {
@@ -72,8 +84,16 @@ h1 {
     text-align: center;
 }
 
+.vote-results-title {
+    font-family: "Ubuntu";
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
 .vote-results {
+    font-family: "Ubuntu";
     font-size: 20px;
+    text-align: center;
 }
 
 .current-block-btn {

@@ -4,6 +4,9 @@
 
 {% block content %}
 <div class="page-header">
+  
+  <!-- Authentication Nav Bar Content-->
+  
   <div class="auth">
     {% if user.is_authenticated %}
       <p class="account-user top-menu">Hi {{ user.username }}!</p>
@@ -14,6 +17,9 @@
     <a href="{% url 'login' %}" class="top-menu text-decoration-none login-links"><span>Log In</span></a>
     <a href="{% url 'users:signup' %}" class="top-menu text-decoration-none login-links"><span>Sign Up</span></a>
   {% endif %}
+  
+  <!-- Nav Bar Content -->
+  
   <a href="{% url 'polls:blockchain' %}" class="top-menu"><span><i class="fab fa-ethereum" style='font-size:50px;color:black'></i></span></a>
   <a href="{% url 'polls:index' %}" class="top-menu app-links"><span>Polls</span></a>
   <h1>Survey-Chain</h1>    
@@ -22,6 +28,9 @@
   <div class="image-header">
       <img src="static/images/blockchainVotePic.jpg">
   </div>
+  
+  <!-- features -->
+  
   <section id="features">
   <div class="content">
     <div class="row">
@@ -42,6 +51,15 @@
       </div>
     </div>
   </section>
+  
+  <!-- Footer -->
+  
+  <footer id="footer">
+      <i class="social-icons fab fa-facebook"></i>
+      <i class="social-icons fab fa-twitter-square"></i>
+      <i class="social-icons fab fa-instagram"></i>
+      <p>© Copyright 2020 Survey-Chain</p>
+  </footer>
   </div>
 </div>
 {% endblock %}

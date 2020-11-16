@@ -79,3 +79,15 @@ h1 {
 .icon:hover {
     color: #FFD700;
 }
+
+/* footer */
+
+#footer {
+    padding: 7% 15%;
+    text-align: center;
+}
+
+.social-icons {
+  text-align: center;
+  margin: 20px 10px;
+}
