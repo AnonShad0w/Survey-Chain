@@ -45,6 +45,8 @@
     font-family: "Ubuntu";
 }
 
+/* Details Page */
+
 .survey-form {
     font-family: "Ubuntu";
     text-align: center;
@@ -53,6 +55,10 @@
 .form-buttons {
     font-family: "Ubuntu";
     text-align: center;
+}
+
+#results-button, #tx-button {
+    color: #000;
 }
 
 h4 {
@@ -98,4 +104,13 @@ h1 {
 
 .current-block-btn {
     display: inline-block;
+}
+
+.eth-cat {
+    max-width: 150%;
+    
+}
+
+.tx-details {
+    text-align: center;
 }
