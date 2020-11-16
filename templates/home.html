@@ -4,28 +4,42 @@
 
 {% block content %}
 <div class="page-header">
+  <a href="{% url 'login' %}" class="top-menu text-decoration-none login-links"><span>Log In</span></a>
+  <a href="{% url 'users:signup' %}" class="top-menu text-decoration-none login-links"><span>Sign Up</span></a>
   <a href="{% url 'polls:blockchain' %}" class="top-menu"><span><i class="fab fa-ethereum" style='font-size:50px;color:black'></i></span></a>
+  <a href="{% url 'polls:index' %}" class="top-menu app-links"><span>Polls</span></a>
   <h1>Survey-Chain</h1>    
 </div>
-<div class="content">
-<div class="auth">
-  {% if user.is_authenticated %}
-    <h2>Hi {{ user.username }}!</h2>
-    <button type="button" class="btn btn-dark"><a href="{% url 'logout' %}" class="login-logout-buttons text-decoration-none">Log Out</a></button>
-  <header>
-  {% endif %}
-</div>
-<div class="app-links">
-  <h3><a href="{% url 'polls:index' %}">Polls</a></h3>
-</div>
-<div class="home-message">
-  <p>Please login or signup to access all website features.</p>
-  <br>
-  <p>For the moment, you may even sign up with a fake email address to test the sites functionality.</p>
-</div>
-<div class="login-logout-buttons">
-    <button type="button" class="btn btn-dark"><a href="{% url 'login' %}" class="text-decoration-none">Log In</a></button> |
-    <button type="button" class="btn btn-dark"><a href="{% url 'users:signup' %}" class="text-decoration-none">Sign Up</a></button>
-</div>
+<div class="container-fluid">
+  <div class="image-header">
+      <img src="static/images/blockchainVotePic.jpg">
+  </div>
+  <section id="features">
+  <div class="content">
+    <div class="row">
+      <div class="col-lg-4">
+        <i class="icon fas fa-user-lock"></i>
+        <h3 class="feature-heading">Secure</h3>
+        <p>Ballots written to the blockchain are private.</p>
+      </div>
+      <div class="col-lg-4">
+        <i class="icon fas fa-fingerprint"></i>
+        <h3 class="feature-heading">Immutable</h3>
+        <p>Submit your vote and feel confident that votes cannot be altered.</p>
+      </div>
+      <div class="col-lg-4">
+        <i class="icon far fa-clock"></i>
+        <h3 class="feature-heading">Convenient</h3>
+        <p>Cast your ballot on your own time.</p>
+      </div>
+    </div>
+  </section>
+    <div class="auth">
+      {% if user.is_authenticated %}
+        <h2>Hi {{ user.username }}!</h2>
+        <button type="button" class="btn btn-dark"><a href="{% url 'logout' %}" class="text-decoration-none">Log Out</a></button>
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock %}
