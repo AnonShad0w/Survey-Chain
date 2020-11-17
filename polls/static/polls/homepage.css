@@ -26,10 +26,6 @@
   justify-content: center;
 }
 
-.content {
-    margin-left: 40px;
-}
-
 h1 {
     font-family: 'Lobster', cursive;
 }
@@ -56,18 +52,24 @@ h1 {
 
 /* Features Section */
 #features {
+    font-family: "Ubuntu" !important;
     text-align: center;
     padding: 7% 15%;
 }
 
 .feature-heading {
-    font-family: "Ubuntu" !important;
     font-weight: bold !important;
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .feature-message {
-    font-family: "Ubuntu" !important;
+    padding-top: 2rem;
+    font-size: 20px;
+}
+
+.col-lg-4 {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .icon {
@@ -83,8 +85,9 @@ h1 {
 /* footer */
 
 #footer {
-    padding: 7% 15%;
+    padding: 1%;
     text-align: center;
+    background-color: #FFD700;
 }
 
 .social-icons {

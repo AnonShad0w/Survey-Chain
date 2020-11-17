@@ -122,6 +122,7 @@ def vote(request, question_id):
             selected_choice.votes += 1
             selected_choice.save()
             choice = str(selected_choice)
+            print(question)
             print(choice)
             
             key = os.environ['KEY']
