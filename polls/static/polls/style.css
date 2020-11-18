@@ -37,6 +37,14 @@
     margin-top: 10px !important;
 }
 
+h1 {
+    font-family: 'Lobster', cursive;
+}
+
+h4 {
+    font-family: "Ubuntu";
+}
+
 .container-fluid {
     padding: 7% 10%;
 }
@@ -61,25 +69,17 @@
     color: #000;
 }
 
-h4 {
-    font-family: "Ubuntu";
-}
+/* blockchain info page */
 
 .blockchain {
     padding: 20px;
 }
 
-h1 {
-    font-family: 'Lobster', cursive;
+/*
+#wallet-balance {
+    visibility: hidden;
 }
-
-.date {
-    color: #828282;
-}
-
-.save {
-    float: right;
-}
+*/
 
 .btn-submit {
   cursor: pointer;

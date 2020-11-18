@@ -82,6 +82,28 @@ h1 {
     color: #FFD700;
 }
 
+/* Testimonials Section */
+
+#info-carousel {
+  font-family: "Ubuntu";
+  text-align: center;
+  background-color: #344068; 
+  color: #FFD700;
+  padding-top: 8%;
+  padding-bottom: 8%;
+}
+
+.carousel-text {
+    line-height: 2.5rem;
+}
+
+.graphic {
+    width: 20%;
+    padding-top: 5%;
+    padding-bottom: 7%;
+}
+
+
 /* footer */
 
 #footer {

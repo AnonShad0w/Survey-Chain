@@ -54,7 +54,6 @@ def blockchain_info(request):
         wallet_balance = web3.fromWei(wallet_balance, "ether") # convert to ether
     
         tmpl_vars = {
-            'current_block_num': current_block_num,
             'wallet_balance': wallet_balance,
             'address': address,
         }

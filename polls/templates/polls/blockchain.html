@@ -44,14 +44,16 @@
 		<form action="" method="POST">
 		    {% csrf_token %}
 		    <label for="wallet address">Enter the wallet address:</label>
-		    <input type="text" id="wallet address" name="address" placeholder="0x..." size="45">
-		    <input type="submit" value="Submit">
+		    <input type="text" name="address" placeholder="0x..." size="45">
+		    <input id="wallet-addr-btn" type="submit" value="Submit">
 		</form>
 		<br>
-		<p>You entered the wallet address of: <em>{{ address }}</em></p>
-		<p>The amount of ETH in this wallet is: <em>{{ wallet_balance }}</em></p>
+		<p id="wallet-balance"><em>{{ address }}</em>   <em>{{ wallet_balance }}</em></p>
 	    </div>
 	</div>
     </div>
+    <script language="javascript" type="text/javascript" src="{% static 'js/web3.min.js' 'js/web3.min.js.map' %}"></script>
+    <script language="javascript" type="text/javascript" src="{% static 'js/abi.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
   </body>
 </html>

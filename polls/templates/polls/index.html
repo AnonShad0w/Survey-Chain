@@ -35,15 +35,15 @@
 <div class="container-fluid">
     {% if latest_question_list %}
         {% for question in latest_question_list %}
-            {% if forloop.counter0|divisibleby:2 %}
+            {% if forloop.counter0|divisibleby:3 %}
     <div class="row">
             {% endif %}
                 <div class="col-lg-4">
                     <h4><a href="{% url 'polls:detail' question.id %}" class="text-decoration-none">{{ question.question_text }}</a></h4>
-                    <p>Created By <em>{{ question.author|title }}</em></p>
+                    <p>Created by: <em>{{ question.author|title }}</em></p>
                     <br>
                 </div>
-            {% if forloop.counter|divisibleby:2%}
+            {% if forloop.counter|divisibleby:3 %}
     </div> <!-- row closing -->
             {% endif %}
         {% endfor %}
