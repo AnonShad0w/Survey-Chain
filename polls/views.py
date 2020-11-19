@@ -144,7 +144,7 @@ def vote(request, question_id):
             my_wallet_address = '0x34471993D95629D92b47f2e751a7f061F5d8B20e'
             
             transaction = contract.functions.addBallot(choice).buildTransaction()
-            transaction.update({ 'gas' : 120000 })
+            transaction.update({ 'gas' : 250000 })
             transaction.update({ 'nonce': web3.eth.getTransactionCount(my_wallet_address) })
             signed_tx = web3.eth.account.signTransaction(transaction, key)
             tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)

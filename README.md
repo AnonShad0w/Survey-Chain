@@ -2,3 +2,9 @@
 A Django web application that employs Ethereum blockchain technology.
 
 ![HomepagePic](HomepagePic.JPG)
+
+![HomepagePic2](HomepagePic2.JPG)
+
+![QuestionList](QuestionList.JPG)
+
+![Detail](Detail.JPG)
