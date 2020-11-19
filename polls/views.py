@@ -2,6 +2,12 @@ import os
 import dotenv
 import json
 
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import io
+import urllib, base64
+
 from web3 import Web3
 from datetime import datetime
 from django.http import HttpResponseRedirect
@@ -87,6 +93,16 @@ class ResultsView(generic.DetailView):
     
     model = Question
     template_name = 'polls/results.html'
+    
+    def plot(self):
+        plt.plot(range(10))
+        fig = plt.gcf()
+        buf = io.BytesIO()
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+        return {'data':uri}
 
 def vote(request, question_id):
     
@@ -184,6 +200,7 @@ def new_poll(request):
         if form.is_valid() and formset.is_valid():
             new_poll = form.save(commit=False)
             new_poll.author = request.user
+            new_poll.pub_date = timezone.localtime(timezone.now())
             new_poll.save()
             for inline_form in formset:
                 if inline_form.cleaned_data:

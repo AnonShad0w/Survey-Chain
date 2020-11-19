@@ -34,11 +34,15 @@
     </div>
     <div class="container-fluid">
         <h2 class="vote-results-title">{{ question.question_text }}</h2>
-        <ul>
+        <ul class="unordered-results">
         {% for choice in question.choice_set.all %}
           <p class="vote-results">{{ choice.choice_text }} -- <strong>{{ choice.votes }}</strong> vote{{ choice.votes|pluralize }}</p>
         {% endfor %}
         </ul>
+        <!-- Plot -->
+        <div class="plot">
+            <img src="{{ data }}" alt="" height="250", width="250">
+        </div>
     </div>
   </body>
 </html>

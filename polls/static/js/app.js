@@ -1,5 +1,3 @@
-
-
 function startApp() {
   const contractAddress = '0x070f7B6de5e5453FaCD01dA8cFf382BC6ACd4d9b';
   var ballot = new web3js.eth.Contract(myABI, contractAddress);
@@ -21,11 +19,11 @@ window.addEventListener('load', function() {
     // Handle the case where the user doesn't have web3. Probably
     // show them a message telling them to install Metamask in
     // order to use our app.
-    let web3 = new Web3(web3.givenProvider || "ws:192.168.0.26:8000");
+  let web3 = new Web3(Web3.givenProvider || "wss://ropsten.infura.io/ws/v3/60ccb3c382e44f5b87d4ce6ce0306e57");
   }
 
   // Now you can start your app & access web3js freely:
-  startApp()
+  startApp();
 
 })
 

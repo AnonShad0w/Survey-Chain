@@ -41,6 +41,7 @@
                 <div class="col-lg-4">
                     <h4><a href="{% url 'polls:detail' question.id %}" class="text-decoration-none">{{ question.question_text }}</a></h4>
                     <p>Created by: <em>{{ question.author|title }}</em></p>
+                    <p>Published on: <em>{{ question.pub_date }}</em></p>
                     <br>
                 </div>
             {% if forloop.counter|divisibleby:3 %}

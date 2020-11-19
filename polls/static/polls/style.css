@@ -90,6 +90,8 @@ h4 {
     text-align: center;
 }
 
+/* Results Page */
+
 .vote-results-title {
     font-family: "Ubuntu";
     margin-bottom: 1rem;
@@ -100,6 +102,10 @@ h4 {
     font-family: "Ubuntu";
     font-size: 20px;
     text-align: center;
+}
+
+.unordered-results {
+    padding-left: 0;
 }
 
 .current-block-btn {

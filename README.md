@@ -1,2 +1,4 @@
 # Survey-Chain Web App
-A Django app that employs Ethereum blockchain
+A Django web application that employs Ethereum blockchain technology.
+
+![Homepage](HomepagePic.jpg)
