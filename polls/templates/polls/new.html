@@ -18,12 +18,11 @@
         {% endif %}
         <a href="{% url 'home' %}" class="top-menu"><span class=""><i class="fas fa-home" style="font-size:40px"></i></span></a>
         <a href="{% url 'polls:blockchain' %}" class="top-menu"><span class=""><i class="fab fa-ethereum" style='font-size:50px;color:black'></i></span></a>
-        <h1><a href="{% url 'polls:index' %}">Question List</a></h1>
+        <h1><a href="{% url 'polls:index' %}">Add A Survey</a></h1>
     </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8">
-          <h2>Add a new question:</h2>
           <form method="post" class="poll-form">
             <table>
             {% csrf_token %}
