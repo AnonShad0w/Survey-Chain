@@ -48,7 +48,9 @@ def blockchain_info(request):
     if request.method=='GET' and 'current-block-btn' in request.GET:
         tmpl_vars = {
                 'current_block_num': current_block_num,
-            }         
+            }
+        dataJSON = json.dumps(tmpl_vars)
+        tmpl_vars['data'] = dataJSON
         return render(request, 'polls/blockchain.html', tmpl_vars)
         
     if request.method == None:
@@ -63,6 +65,7 @@ def blockchain_info(request):
             'wallet_balance': wallet_balance,
             'address': address,
         }
+        
         return render(request, 'polls/blockchain.html', tmpl_vars)
 
     return render(request, 'polls/blockchain.html')

@@ -49,6 +49,13 @@ h4 {
     padding: 7% 10%;
 }
 
+/* Question Index Page */
+
+.col-lg-4 {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .question-list {
     font-family: "Ubuntu";
 }
